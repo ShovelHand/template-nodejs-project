@@ -1,0 +1,3 @@
+C:\Users\carmi\source\repos\template-nodejs-project\template-nodejs-project\obj\Debug\template-nodejs-project.njsproj.AssemblyReference.cache
+C:\Users\carmi\source\repos\template-nodejs-project\template-nodejs-project\obj\Debug\template-nodejs-project.njsproj.CoreCompileInputs.cache
+C:\Users\carmi\source\repos\template-nodejs-project\template-nodejs-project\bin\Microsoft.NodejsTools.WebRole.dll
