@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="dist\app-bundle.js" />
+    <Content Include="Routes\sample.routes.js" />
     <Content Include="Routes\sample.routes.ts" />
     <Content Include="server.js" />
     <Content Include="webpack-config.js" />

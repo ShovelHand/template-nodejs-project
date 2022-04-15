@@ -3,11 +3,14 @@ import * as mongoose from 'mongoose';
 import sampleRoute from "./Routes/sample.routes";
 var path = require('path');
 var express = require('express');
+var bodyParser = require('body-parser');
 
 var app = express();
 
 var staticPath = path.join(__dirname, '/');
 app.use(express.static(staticPath));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Allows you to set port in the project properties.
 app.set('port', process.env.PORT || 3000);
@@ -30,8 +33,6 @@ async function main() {
         });
     } catch (e) {
         console.error(e);
-    } finally {
-        mongoose.connection.close();
     }
 }
 
