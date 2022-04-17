@@ -49,6 +49,9 @@
     <TypeScriptCompile Include="app.tsx" />
     <TypeScriptCompile Include="Models\sampleModel.ts" />
     <TypeScriptCompile Include="__Test__\sampleMongo.test.ts" />
+    <TypeScriptCompile Include="__Test__\testDB.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />

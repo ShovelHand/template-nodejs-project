@@ -1,33 +1,60 @@
+// test/post.test.ts
+import sampleModel from "../Models/sampleModel";
+import ISample from "../Models/sampleModel";
+import * as mongoose from 'mongoose';
 
-const databaseName = 'test'
-const app = require("../server");
-const mongoose = require('mongoose');
-const supertest = require("supertest");
-const request = supertest(app);
-import sampleModel from '../Models/sampleModel';
+beforeAll(async () => {
+    const uri = "mongodb+srv://dbUser:dbUserPassword@cluster0.dmfce.mongodb.net/JestTests?retryWrites=true&w=majority";
+    await mongoose.connect(uri);
 
-it("gets the logging endpoint. Make sure it returns an OK response", async (done) => {
-    return request.get("/test/hello").then(data => expect(data).toEqual("Hello world!"));
- 
+    try {
+        // Connect to the MongoDB cluster
+        const db = mongoose.connection;
+        db.on("error", console.error.bind(console, "connection error: "));
+        db.once("open", function () {
+            console.log("Connected successfully to MongoDB");
+        });
+    } catch (e) {
+        console.error(e);
+    }
 });
 
-//it('works with promises', () => {
-//    expect.assertions(1);
-//    return user.getUserName(4).then(data => expect(data).toEqual('Mark'));
-//});
+afterEach(async () => {
+ //   await dbHandler.clearDatabase()
+});
 
+afterAll(async () => {
+    await mongoose.connection.close();
+});
 
-//describe('User Model Test', () => {
-
-//    beforeAll(async () => {
-//        const url = `mongodb://127.0.0.1/${databaseName}`
-//        await mongoose.connect(url, { useNewUrlParser: true })
-//    });
-
-//    it('A test seeing a commit will work', async (done) => {
-//        const res = await request(app).get('/test')
-            
-//        expect(res.status).toBe(200);
-//        done();
-//    });
-//})
+describe('post test', () => {
+    it('entity can be created correctly', async () => {
+        // expect that two assertios will be made
+        expect.assertions(2);
+        // create new post model instance
+        let id: string;
+        const canPost = async () => {
+            const sample = new sampleModel();
+            // set some test properties
+            sample.name = 'Test item';
+            // save test post to db
+            id = await sample.save();
+            // find inserted post by title
+            const sampleInDB = await sampleModel.findOne({ name: 'Test item' }).exec();
+            console.log('sample document from DB', sampleInDB);
+            // check that title is expected
+            expect(sampleInDB.name).toEqual('Test item');
+        }
+        const canGetById = async () => {
+            const sampleInDB = await sampleModel.findById(id).exec();
+            expect(sampleInDB.name).toEqual('Test item')
+        };
+        const deleteById = async () => {
+            sampleModel.findByIdAndDelete(id);
+        };
+        await canPost();
+        await canGetById();
+        deleteById();
+        
+    });
+});
