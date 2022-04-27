@@ -60,30 +60,6 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-//router.get("/list/:maxResults?", async (req, res) => {
-//    try {
-//        if (req.params.maxResults) {
-//            const ret = await sampleModel.find({}, (err, result) => {
-//                if (err) {
-//                    throw new Error(err.message);
-//                } else {
-//                    res.json(ret);
-//                    res.send();
-//                }
-//            }).limit(parseInt(req.params.maxResults));
-//        } else {
-//        sampleModel.find({}).then(samples => {
-//            res.json(samples);
-//            res.send();
-//        });
-//        }
-//    } catch (e) {
-//        res.status(500);
-//        res.json({ error: e.message });
-//        res.send();
-//    }
-//});
-
 export default router;
 
 
