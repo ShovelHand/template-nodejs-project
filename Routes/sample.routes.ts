@@ -7,6 +7,23 @@ function loggerMiddleware(request, response, next) {
     next();
 }
 
+router.get('/list', async (req, res) => {
+    try {
+        if (req.query.maxResults) {
+            const ret = await sampleModel.find({}).limit(parseInt(req.query.maxResults));
+            res.json(ret);
+        } else {
+            const ret = await sampleModel.find({});
+            res.json(ret);
+        }
+        res.send();
+
+    } catch (e) {
+        res.status(500);
+        res.json({ error: e.message });
+        res.send();
+    }
+});
 
 router.get('/hello', async (req, res) => {
     res.send("Hello world!");
@@ -42,6 +59,30 @@ router.get("/:id", async (req, res) => {
         res.send();
     }
 });
+
+//router.get("/list/:maxResults?", async (req, res) => {
+//    try {
+//        if (req.params.maxResults) {
+//            const ret = await sampleModel.find({}, (err, result) => {
+//                if (err) {
+//                    throw new Error(err.message);
+//                } else {
+//                    res.json(ret);
+//                    res.send();
+//                }
+//            }).limit(parseInt(req.params.maxResults));
+//        } else {
+//        sampleModel.find({}).then(samples => {
+//            res.json(samples);
+//            res.send();
+//        });
+//        }
+//    } catch (e) {
+//        res.status(500);
+//        res.json({ error: e.message });
+//        res.send();
+//    }
+//});
 
 export default router;
 
