@@ -6,7 +6,7 @@
         "removeComments": false,
         "sourceMap": true,
         "moduleResolution": "Node",
-   
+
         "jsx": "react"
     },
     "exclude": [
@@ -16,7 +16,7 @@
         "**/*.test.ts"
     ],
     "files": [
-        "app.tsx",
+        "web/app.tsx",
         "server.ts"
     ]
 }

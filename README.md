@@ -7,7 +7,7 @@ Don't be thrown by the involvement of Visual Studio; that's just for development
 	- then on your machine navigate to template-node-project/template-node-project (yes, it's a bit redundant).
 2. Install Packages, Run WebPack
 	1. Install node modules the usual way, with ```npm install packages```
-	2. run WebPack with the commange ```npm run build```. This step is required to transpile the TypeScript modules into JavaScript
+	2. run WebPack with the command ```npm run build```. This step is required to transpile the TypeScript modules into JavaScript
 3. Start the server
 	- By running ```npm start```
 	- In your browser, go to localhost:3000

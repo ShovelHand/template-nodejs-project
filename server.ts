@@ -4,6 +4,7 @@ import sampleRoute from "./Routes/sample.routes";
 var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
+require('dotenv').config();
 
 var app = express();
 
@@ -20,8 +21,9 @@ var server = app.listen(app.get('port'), function () {
 });
 
 async function main() {
-    /* Mongo connection */
-    const uri = "mongodb+srv://dbUser:dbUserPassword@cluster0.dmfce.mongodb.net/DefaulDataBase?retryWrites=true&w=majority";
+  /* Mongo connection */
+  const uri = `mongodb+srv://dbUser:${process.env.MONGO_USER}Password${process.env.MONGO_PASSWORD}.dmfce.mongodb.net/${process.env.MONGO_DATABASE}?retryWrites=true&w=majority`;
+  console.log("URI: " + uri);
     mongoose.connect(uri);
 
     try {

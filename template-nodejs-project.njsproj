@@ -32,7 +32,10 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include=".env" />
+    <Content Include=".env.example" />
     <Content Include="dist\app-bundle.js" />
+    <Content Include="Models\sampleModel.js" />
     <Content Include="Routes\sample.routes.js" />
     <Content Include="Routes\sample.routes.ts" />
     <Content Include="server.js" />
@@ -46,8 +49,11 @@
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="app.tsx" />
+    <TypeScriptCompile Include="web\app.tsx" />
     <TypeScriptCompile Include="Models\sampleModel.ts" />
+    <TypeScriptCompile Include="web\components\SampleEntityList.tsx">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="__Test__\sampleMongo.test.ts" />
   </ItemGroup>
   <ItemGroup>
@@ -55,7 +61,8 @@
     <Folder Include="dist\" />
     <Folder Include="Models\" />
     <Folder Include="Routes\" />
-    <Folder Include="Views\" />
+    <Folder Include="web\" />
+    <Folder Include="web\components\" />
     <Folder Include="__Test__\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
