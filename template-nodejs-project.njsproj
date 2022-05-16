@@ -49,9 +49,15 @@
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Models\jellicleCatModel.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Routes\jellicleCat.routes.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="web\app.tsx" />
     <TypeScriptCompile Include="Models\sampleModel.ts" />
-    <TypeScriptCompile Include="web\components\SampleEntityList.tsx">
+    <TypeScriptCompile Include="web\components\JellicleCatsList.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="__Test__\sampleMongo.test.ts" />

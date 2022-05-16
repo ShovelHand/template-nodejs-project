@@ -38,11 +38,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 exports.__esModule = true;
 var mongoose = require("mongoose");
 var sample_routes_1 = require("./Routes/sample.routes");
+var jellicleCat_routes_1 = require("./Routes/jellicleCat.routes");
 var path = require('path');
 var express = require('express');
+var bodyParser = require('body-parser');
+require('dotenv').config();
 var app = express();
 var staticPath = path.join(__dirname, '/');
 app.use(express.static(staticPath));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 // Allows you to set port in the project properties.
 app.set('port', process.env.PORT || 3000);
 var server = app.listen(app.get('port'), function () {
@@ -52,7 +57,8 @@ function main() {
     return __awaiter(this, void 0, void 0, function () {
         var uri, db;
         return __generator(this, function (_a) {
-            uri = "mongodb+srv://dbUser:dbUserPassword@cluster0.dmfce.mongodb.net/DefaulDataBase?retryWrites=true&w=majority";
+            uri = "mongodb+srv://dbUser:".concat(process.env.MONGO_USER, "Password").concat(process.env.MONGO_PASSWORD, ".dmfce.mongodb.net/").concat(process.env.MONGO_DATABASE, "?retryWrites=true&w=majority");
+            console.log("URI: " + uri);
             mongoose.connect(uri);
             try {
                 db = mongoose.connection;
@@ -64,12 +70,11 @@ function main() {
             catch (e) {
                 console.error(e);
             }
-            finally {
-                mongoose.connection.close();
-            }
             return [2 /*return*/];
         });
     });
 }
 main()["catch"](console.error);
+/*Routes*/
 app.use('/sample', sample_routes_1["default"]);
+app.use('/cats', jellicleCat_routes_1["default"]);

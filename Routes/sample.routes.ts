@@ -9,13 +9,13 @@ function loggerMiddleware(request, response, next) {
 
 router.get('/list', async (req, res) => {
     try {
-        if (req.query.maxResults) {
-          const ret = await sampleModel.find({}).limit(parseInt(req.query.maxResults));
-            res.json(ret);
-        } else {
+        //if (req.query.maxResults) {
+        //  const ret = await sampleModel.find({}).limit(parseInt(req.query.maxResults));
+        //    res.json(ret);
+        //} else {
           const ret = await sampleModel.find({});
             res.json(ret);
-        }
+     //   }
         res.send();
 
     } catch (e) {

@@ -1,6 +1,7 @@
 'use strict';
 import * as mongoose from 'mongoose';
 import sampleRoute from "./Routes/sample.routes";
+import catRoute from "./Routes/jellicleCat.routes";
 var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -39,4 +40,6 @@ async function main() {
 }
 
 main().catch(console.error);
+/*Routes*/
 app.use('/sample', sampleRoute);
+app.use('/cats', catRoute);

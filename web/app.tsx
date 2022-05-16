@@ -2,11 +2,11 @@ declare function require(moduleName: string): any;
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-import SampleEntityList from "./components/SampleEntityList";
+import JellicleCatsList from "./components/jellicleCatsList";
 export class Main extends React.Component {
     render() {
         return (
-            <SampleEntityList/>
+            <JellicleCatsList/>
         );
     }
 }
