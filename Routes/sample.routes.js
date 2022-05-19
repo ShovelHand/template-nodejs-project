@@ -37,24 +37,88 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 var express_1 = require("express");
+var sampleModel_1 = require("../Models/sampleModel");
 var router = (0, express_1.Router)();
 function loggerMiddleware(request, response, next) {
     console.log("".concat(request.method, " ").concat(request));
     next();
 }
+router.get('/list', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var ret, e_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, sampleModel_1["default"].find({})];
+            case 1:
+                ret = _a.sent();
+                res.json(ret);
+                //   }
+                res.send();
+                return [3 /*break*/, 3];
+            case 2:
+                e_1 = _a.sent();
+                res.status(500);
+                res.json({ error: e_1.message });
+                res.send();
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
 router.get('/hello', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         res.send("Hello world!");
         return [2 /*return*/];
     });
 }); });
+router.post('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var name_1, sample, ret, e_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                name_1 = req.body.name;
+                sample = new sampleModel_1["default"]({ name: name_1 });
+                return [4 /*yield*/, sample.save()];
+            case 1:
+                ret = _a.sent();
+                res.json(ret);
+                res.send();
+                return [3 /*break*/, 3];
+            case 2:
+                e_2 = _a.sent();
+                res.status(500);
+                res.json({ error: e_2.message });
+                res.send();
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+router.get("/:id", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var ret, e_3;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                if (!req.params.id) {
+                    throw "no ID was passed as a parameter";
+                }
+                return [4 /*yield*/, sampleModel_1["default"].findById(req.params.id)];
+            case 1:
+                ret = _a.sent();
+                res.json(ret);
+                res.send();
+                return [3 /*break*/, 3];
+            case 2:
+                e_3 = _a.sent();
+                res.status(500);
+                res.json({ error: e_3.message });
+                res.send();
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
 exports["default"] = router;
-//var sampleModel = require('../Models/sampleModel');
-//var express = require('express');
-//router.post('/', async (req, res) => {
-//    const { name } = req.body;
-//    const sample = new sampleModel({ name });
-//    const ret = await sample.save();
-//    res.json(ret);
-//    res.send();
-//});

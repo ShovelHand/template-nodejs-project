@@ -36,10 +36,14 @@
     <Content Include=".env.example" />
     <Content Include="dist\app-bundle.js" />
     <Content Include="Models\sampleModel.js" />
+    <Content Include="Routes\jellicleCat.routes.js" />
     <Content Include="Routes\sample.routes.js" />
     <Content Include="Routes\sample.routes.ts" />
     <Content Include="server.js" />
     <Content Include="webpack-config.js" />
+    <Content Include="web\styles\styleSheet.css">
+      <SubType>Code</SubType>
+    </Content>
     <None Include="server.ts" />
     <Content Include="index.html" />
     <Content Include="jest-mongodb-config.js" />
@@ -57,6 +61,9 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="web\app.tsx" />
     <TypeScriptCompile Include="Models\sampleModel.ts" />
+    <TypeScriptCompile Include="web\components\inputs\CatForm.tsx">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="web\components\JellicleCatsList.tsx">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -69,6 +76,8 @@
     <Folder Include="Routes\" />
     <Folder Include="web\" />
     <Folder Include="web\components\" />
+    <Folder Include="web\components\inputs\" />
+    <Folder Include="web\styles\" />
     <Folder Include="__Test__\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />

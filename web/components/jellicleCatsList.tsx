@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useState, useEffect } from "react";
 
 
-export const SampleEntityList: React.FC<any> = () => {
+export const JellicleCatList: React.FC<any> = () => {
 	const [entities, setEntities] = useState<Object>({});
 	const [entityList, setEntityList] = useState<any>();
 	const getEntities = () => {
@@ -32,15 +32,17 @@ export const SampleEntityList: React.FC<any> = () => {
 		if (entities.length) {
 			const entitiesAsObject = JSON.parse(entities);
 			const names = entitiesAsObject.map((cat) =>
-				<li>{ cat.name }</li>
+				<li id={cat._id} key={cat._id}>{ cat.name }</li>
 			);
 			setEntityList(names);
 		}
 	}, [entities]);
 
 	return (
-		<ul>{entityList}</ul>
+		<div id="catList">
+			<ul>{entityList}</ul>
+		</div>
 	);
 };
 
-export default SampleEntityList;
+export default JellicleCatList;
