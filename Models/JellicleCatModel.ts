@@ -5,7 +5,6 @@ export interface Isample {
   facts: string;
 }
 
-
 export const jellicleSchema = new Schema({
   name: String,
   facts: String,

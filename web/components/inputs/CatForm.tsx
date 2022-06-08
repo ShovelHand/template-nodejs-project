@@ -13,7 +13,7 @@ export const CatForm: React.FC<any> = () => {
 		}
 		axios.post("/cats",
 			{ "name": name, "facts": facts }).then((response) => {
-			console.log(response);
+				console.log(response);
 		})
 			.catch(function (error) {
 				console.log(error);
@@ -29,6 +29,10 @@ export const CatForm: React.FC<any> = () => {
 
 	return (
 		<form onSubmit={handleSubmit} id="newCatForm">
+			<h2>Add a Jellicle Cat?</h2>
+			<div id="form instructions"> 
+				Perhaps one day you will reach your aim, and call them by their name.
+			</div>
 			<div>
 			<label>
 				Cat's Name:
@@ -41,6 +45,7 @@ export const CatForm: React.FC<any> = () => {
 					<input type="text" value={facts} onChange={handleFactsChange}/>
 				</label>
 			</div>
+			<br/>
 			<input type="submit" value="Submit" />
 		</form>
 	);

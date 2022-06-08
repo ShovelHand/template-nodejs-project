@@ -1,10 +1,10 @@
 import * as React from 'react'
 import { useState, useEffect } from "react";
 
-
 export const JellicleCatList: React.FC<any> = () => {
 	const [entities, setEntities] = useState<Object>({});
 	const [entityList, setEntityList] = useState<any>();
+
 	const getEntities = () => {
 		const xhr = new XMLHttpRequest();
 		xhr.open('get', '/cats/list', true);
@@ -19,7 +19,6 @@ export const JellicleCatList: React.FC<any> = () => {
 			}
 		}
 		xhr.onload = () => {
-		//	console.log("response " + xhr.responseText);
 			setEntities(xhr.response);
 		}
 		xhr.send();
@@ -32,7 +31,7 @@ export const JellicleCatList: React.FC<any> = () => {
 		if (entities.length) {
 			const entitiesAsObject = JSON.parse(entities);
 			const names = entitiesAsObject.map((cat) =>
-				<li id={cat._id} key={cat._id}>{ cat.name }</li>
+				<option value={cat._id} key={cat._id}>{ cat.name }</option>
 			);
 			setEntityList(names);
 		}
@@ -40,7 +39,7 @@ export const JellicleCatList: React.FC<any> = () => {
 
 	return (
 		<div id="catList">
-			<ul>{entityList}</ul>
+			<select name="cats" multiple size="6">{entityList}</select>
 		</div>
 	);
 };

@@ -4,7 +4,6 @@ export interface Isample {
     name: string;
 }
 
-
 export const sampleSchema = new Schema({
     name: String,
 
