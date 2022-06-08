@@ -1,7 +1,7 @@
 import * as React from 'react'
 import axios from 'axios';
 
-export const CatForm: React.FC<any> = () => {
+export const CatForm: React.FC<any> = ({ updateList }) => {
 	const [name, setName] = React.useState<string>("");
 	const [facts, setFacts] = React.useState<string>("");
 
@@ -14,6 +14,7 @@ export const CatForm: React.FC<any> = () => {
 		axios.post("/cats",
 			{ "name": name, "facts": facts }).then((response) => {
 				console.log(response);
+				updateList();
 		})
 			.catch(function (error) {
 				console.log(error);
